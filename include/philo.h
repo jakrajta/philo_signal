@@ -13,6 +13,7 @@
 # define RED    "\x1b[31m"
 # define GRE	"\x1b[90m"
 # define GR 	"\x1b[34m"
+# define MAG 	"\x1b[35m"
 # define CYA    "\x1b[36m"
 # define R		"\x1b[0m"
 
