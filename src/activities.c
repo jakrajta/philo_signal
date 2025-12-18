@@ -90,12 +90,12 @@ void	think(t_philo *one_philo)
 	print_activity(one_philo, THINK);	
 	if (one_philo->data->philos_nbr % 2 == 0)
 		return ;
-	// think_time = (one_philo->data->time_to_eat * 2) / one_philo->data->time_to_sleep;
-	think_time = (one_philo->data->time_to_die - one_philo->last_meal_time - one_philo->data->time_to_eat) / 2;
+	think_time = (one_philo->data->time_to_eat * 2) - one_philo->data->time_to_sleep;
+	// think_time = (one_philo->data->time_to_die - one_philo->last_meal_time - one_philo->data->time_to_eat) / 2;
 	if (think_time < 0)
 		think_time = 0;
-	if (think_time > 600)   // pokud druha moznost vymazat
-		think_time = 200;
-	// activity_pause(one_philo, (think_time / 3));	
-	activity_pause(one_philo, think_time);
+	// if (think_time > 600)   // pokud druha moznost vymazat
+	// 	think_time = 200;
+	activity_pause(one_philo, (think_time * 0.3));	
+	// activity_pause(one_philo, think_time);
 }

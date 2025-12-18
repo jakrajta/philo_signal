@@ -23,6 +23,6 @@ void	activity_pause(t_philo *one_philo, long input_time)
 	{
 		if (philo_dead(one_philo->data))
 			break ;
-		usleep(10);
+		usleep(100);
 	}
 }
