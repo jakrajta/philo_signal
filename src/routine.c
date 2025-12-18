@@ -20,7 +20,8 @@ bool	philos_full(t_data *data)
 static void	synchro_start(t_philo *one_philo)
 {
 	while (get_actual_time() < one_philo->data->start_time)
-		usleep(10);
+		//usleep(10);
+		continue;
 }
 
 static void delay_philo(t_philo *one_philo)
