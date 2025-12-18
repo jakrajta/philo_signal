@@ -2,7 +2,7 @@
 
 bool	is_whitespace(char c)
 {
-	return ((c >= 9 && c <= 13 )|| c == 32);
+	return ((c >= 9 && c <= 13) || c == 32);
 }
 
 bool	is_digit(char c)

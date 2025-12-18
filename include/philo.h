@@ -10,12 +10,11 @@
 # include <stdbool.h>
 
 # define B		"\x1b[1m"
-# define RED    "\x1b[31m"  //die
-# define GRE	"\x1b[90m" //taking fork
-# define GR 	"\x1b[34m"           //"\x1b[32m"  //eat
-# define MAG 	"\x1b[35m"  //eat magenda
-# define CYA    "\x1b[36m"  //sleep cyan
-# define R		"\x1b[0m"	// reset
+# define RED    "\x1b[31m"
+# define GRE	"\x1b[90m"
+# define GR 	"\x1b[34m"
+# define CYA    "\x1b[36m"
+# define R		"\x1b[0m"
 
 typedef enum e_activity
 {
@@ -36,7 +35,7 @@ typedef struct s_data
 	int				philo_dead;
 	long			start_time;
 	int				full_philos;
-	pthread_t		*p_ths; // threads
+	pthread_t		*p_ths;
 	pthread_mutex_t	*forks_locks;
 	pthread_mutex_t	print_lock;
 	pthread_mutex_t	dead_lock;
@@ -55,29 +54,29 @@ typedef struct s_philo
 	t_data			*data;
 }	t_philo;
 
-void	display_error(char *msg);
-bool	is_whitespace(char c);
-bool	is_digit(char c);
-int		input_control(int argc, char **argv);
-int		my_atoi(char *str);
-long	get_actual_time(void);
-void	print_activity(t_philo *one_philo, t_activity activity);
-bool	philo_dead(t_data *data);
-void	take_forks(t_philo *one_philo);
-void	return_forks(t_philo *one_philo);
-void	eat(t_philo *one_philo);
-void	psleep(t_philo *one_philo);
-void	think(t_philo *one_philo);
-bool	philos_full(t_data *data);
-void	*routine(void *arg);
-void	*monitor(void *arg);
 void	activity_pause(t_philo *one_philo, long input_time);
+void	clean_all(t_data *data);
+void	destroy_mutexes(t_data *data);
+void	display_error(char *msg);
+void	eat(t_philo *one_philo);
+long	get_actual_time(void);
 int		handle_threads(t_data *data);
 void	init_data(t_data *data, char **argv);
-void	init_philos(t_data *data);
 void	init_mutexes(t_data *data);
-void	destroy_mutexes(t_data *data);
-void	clean_all(t_data *data);
+void	init_philos(t_data *data);
+int		input_control(int argc, char **argv);
+bool	is_digit(char c);
+bool	is_whitespace(char c);
+void	*monitor(void *arg);
+int		my_atoi(char *str);
 int		one_philo_case(t_data *data);
+bool	philo_dead(t_data *data);
+bool	philos_full(t_data *data);
+void	print_activity(t_philo *one_philo, t_activity activity);
+void	psleep(t_philo *one_philo);
+void	return_forks(t_philo *one_philo);
+void	*routine(void *arg);
+void	take_forks(t_philo *one_philo);
+void	think(t_philo *one_philo);
 
 #endif

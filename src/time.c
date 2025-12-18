@@ -25,6 +25,4 @@ void	activity_pause(t_philo *one_philo, long input_time)
 			break ;
 		usleep(10);
 	}
-
 }
-

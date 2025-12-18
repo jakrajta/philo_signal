@@ -19,9 +19,10 @@ bool	philos_full(t_data *data)
 
 static void	synchro_start(t_philo *one_philo)
 {
-	while(get_actual_time() < one_philo->data->start_time)
+	while (get_actual_time() < one_philo->data->start_time)
 		usleep(10);
-}	
+}
+
 static void delay_philo(t_philo *one_philo)
 {
 	if (one_philo->data->philos_nbr % 2 == 0)
@@ -31,7 +32,7 @@ static void delay_philo(t_philo *one_philo)
 	}
 	else
 		if (one_philo->id % 2 == 1)
-		think(one_philo);
+			think(one_philo);
 }
 
 void	*routine(void *arg)
@@ -59,10 +60,11 @@ void	*routine(void *arg)
 				count_full_philos(one_philo);	
 			}
 			if (philos_full(one_philo->data))
-					break;	
+				break;
 		}
 		psleep(one_philo);
 		think(one_philo);
 	}
 	return (NULL);
 }
+

@@ -4,7 +4,6 @@ void	take_forks(t_philo *one_philo)
 {
 	if (philo_dead(one_philo->data))
 		return ;
-	
 	if (one_philo->id % 2 == 0)
 	{
 		pthread_mutex_lock(one_philo->right_fork);
@@ -93,7 +92,7 @@ void	think(t_philo *one_philo)
 		return ;
 	// think_time = (one_philo->data->time_to_eat * 2) / one_philo->data->time_to_sleep;
 	think_time = (one_philo->data->time_to_die - one_philo->last_meal_time - one_philo->data->time_to_eat) / 2;
-	if (think_time  < 0)
+	if (think_time < 0)
 		think_time = 0;
 	if (think_time > 600)   // pokud druha moznost vymazat
 		think_time = 200;
