@@ -10,8 +10,6 @@ bool	philo_dead(t_data *data)
 	return (result);
 }
 
-
-
 static void	set_philo_dead(t_data *data)
 {
 	pthread_mutex_lock(&data->dead_lock);
@@ -26,8 +24,7 @@ void	*monitor(void *arg)
 
 	data = (t_data *)arg;
 	while (get_actual_time() < data->start_time)
-		usleep(50);
-
+		usleep(10);
 	while (!philo_dead(data) && !philos_full(data))
 	{
 		i = -1;

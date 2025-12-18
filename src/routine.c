@@ -20,9 +20,9 @@ bool	philos_full(t_data *data)
 static void	synchro_start(t_philo *one_philo)
 {
 	while(get_actual_time() < one_philo->data->start_time)
-		usleep(50);
+		usleep(10);
 }	
-static void delay_even_philo_nbr(t_philo *one_philo)
+static void delay_philo(t_philo *one_philo)
 {
 	if (one_philo->data->philos_nbr % 2 == 0)
 	{
@@ -34,15 +34,13 @@ static void delay_even_philo_nbr(t_philo *one_philo)
 		think(one_philo);
 }
 
-
-
 void	*routine(void *arg)
 {
 	t_philo	*one_philo;
 
 	one_philo = (t_philo *)arg;
 	synchro_start(one_philo); 
-	delay_even_philo_nbr(one_philo);
+	delay_philo(one_philo);
 	// if(one_philo->id % 2 == 0)
 	// 	usleep(1000);  //spis dat thinking
 	while (!philo_dead(one_philo->data) && !philos_full(one_philo->data))
@@ -58,10 +56,10 @@ void	*routine(void *arg)
 			one_philo->meals_eaten++;
 			if (one_philo->meals_eaten == one_philo->data->meals_nbr)
 			{
-				count_full_philos(one_philo);
-				if (philos_full(one_philo->data))
-					break;
-			}		
+				count_full_philos(one_philo);	
+			}
+			if (philos_full(one_philo->data))
+					break;	
 		}
 		psleep(one_philo);
 		think(one_philo);
