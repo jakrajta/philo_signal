@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   monitor.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jakrajic <jakrajic@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/12/18 19:09:40 by jakrajic          #+#    #+#             */
+/*   Updated: 2025/12/18 19:09:42 by jakrajic         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philo.h"
 
 bool	philo_dead(t_data *data)
@@ -31,7 +43,8 @@ void	*monitor(void *arg)
 		while (++i < data->philos_nbr)
 		{
 			pthread_mutex_lock(&data->philos[i].meal_lock);
-			if ((get_actual_time() - data->philos[i].last_meal_time) > data->time_to_die)
+			if ((get_actual_time()
+					- data->philos[i].last_meal_time) > data->time_to_die)
 			{
 				pthread_mutex_unlock(&data->philos[i].meal_lock);
 				set_philo_dead(data);
@@ -40,7 +53,7 @@ void	*monitor(void *arg)
 			}
 			pthread_mutex_unlock(&data->philos[i].meal_lock);
 		}
-		usleep(50); // aby se CPU nevytizilo na 100 %
+		usleep(50);
 	}
 	return (NULL);
 }

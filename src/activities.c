@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   activities.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jakrajic <jakrajic@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/12/18 18:53:03 by jakrajic          #+#    #+#             */
+/*   Updated: 2025/12/18 19:06:06 by jakrajic         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philo.h"
 
 void	take_forks(t_philo *one_philo)
@@ -10,16 +22,6 @@ void	take_forks(t_philo *one_philo)
 		print_activity(one_philo, TAKE_FORK);
 		pthread_mutex_lock(one_philo->left_fork);
 		print_activity(one_philo, TAKE_FORK);
-		// if (philo_dead(one_philo->data))
-		// {
-		// 	pthread_mutex_unlock(one_philo->right_fork);
-		// 	pthread_mutex_unlock(one_philo->left_fork);
-		// }
-	
-		// pthread_mutex_lock(one_philo->left_fork);
-		// print_activity(one_philo, TAKE_FORK);
-		// pthread_mutex_lock(one_philo->right_fork);
-		// print_activity(one_philo, TAKE_FORK);
 	}
 	else
 	{
@@ -27,37 +29,11 @@ void	take_forks(t_philo *one_philo)
 		print_activity(one_philo, TAKE_FORK);
 		pthread_mutex_lock(one_philo->right_fork);
 		print_activity(one_philo, TAKE_FORK);
-		// if (philo_dead(one_philo->data))
-		// {
-		// 	pthread_mutex_unlock(one_philo->left_fork);
-		// 	pthread_mutex_unlock(one_philo->right_fork);
-		// }
-		// pthread_mutex_lock(one_philo->right_fork);
-		// print_activity(one_philo, TAKE_FORK);
-		// pthread_mutex_lock(one_philo->left_fork);
-		// print_activity(one_philo, TAKE_FORK);
-	}	
+	}
 }
 
 void	return_forks(t_philo *one_philo)
 {
-	// if (one_philo->id % 2 == 0)
-	// {
-		
-	// 	pthread_mutex_unlock(one_philo->right_fork);
-	// 	pthread_mutex_unlock(one_philo->left_fork);
-	// 	// pthread_mutex_unlock(one_philo->left_fork);
-	// 	// pthread_mutex_unlock(one_philo->right_fork);
-	// }
-	// else
-	// {
-	// 	// pthread_mutex_unlock(one_philo->right_fork);
-	// 	// pthread_mutex_unlock(one_philo->left_fork);
-
-	// 	pthread_mutex_unlock(one_philo->left_fork);
-	// 	pthread_mutex_unlock(one_philo->right_fork);
-	// }	
-
 	pthread_mutex_unlock(one_philo->left_fork);
 	pthread_mutex_unlock(one_philo->right_fork);
 }
@@ -87,15 +63,12 @@ void	think(t_philo *one_philo)
 
 	if (philo_dead(one_philo->data))
 		return ;
-	print_activity(one_philo, THINK);	
+	print_activity(one_philo, THINK);
 	if (one_philo->data->philos_nbr % 2 == 0)
 		return ;
-	think_time = (one_philo->data->time_to_eat * 2) - one_philo->data->time_to_sleep;
-	// think_time = (one_philo->data->time_to_die - one_philo->last_meal_time - one_philo->data->time_to_eat) / 2;
+	think_time = (one_philo->data->time_to_eat * 2)
+		- one_philo->data->time_to_sleep;
 	if (think_time < 0)
 		think_time = 0;
-	// if (think_time > 600)   // pokud druha moznost vymazat
-	// 	think_time = 200;
-	activity_pause(one_philo, (think_time * 0.3));	
-	// activity_pause(one_philo, think_time);
+	activity_pause(one_philo, (think_time * 0.3));
 }

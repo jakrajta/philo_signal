@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   handle_threads.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jakrajic <jakrajic@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/12/18 19:07:17 by jakrajic          #+#    #+#             */
+/*   Updated: 2025/12/18 19:07:19 by jakrajic         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philo.h"
 
 int	handle_threads(t_data	*data)
@@ -5,7 +17,7 @@ int	handle_threads(t_data	*data)
 	pthread_t	p_monitor;
 	int			i;
 
-	data->start_time = get_actual_time() + 50;  // dam buffer, aby se vsechna vlakna stacila pripravit
+	data->start_time = get_actual_time() + 50;
 	i = -1;
 	while (++i < data->philos_nbr)
 	{
@@ -14,7 +26,6 @@ int	handle_threads(t_data	*data)
 	}
 	if (pthread_create(&p_monitor, NULL, monitor, data))
 		return (display_error("Failed to create monitor thread"), -1);
-	// natavit ze vscechny threads jsour ready. pak v routin pred spustenim jidla nastavit actual time
 	i = -1;
 	while (++i < data->philos_nbr)
 	{
