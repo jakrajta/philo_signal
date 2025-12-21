@@ -3,14 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jakrajic <jakrajic@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jakrajic <jakrajic@student.42.ft>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/18 19:08:53 by jakrajic          #+#    #+#             */
-/*   Updated: 2025/12/18 19:08:57 by jakrajic         ###   ########.fr       */
+/*   Updated: 2025/12/21 16:30:18 by jakrajic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+_Atomic sig_atomic_t stop = 0;
+
+void	handle_sigint(int sig)
+{
+	(void)sig;
+	stop = 1;
+}
 
 void	clean_all(t_data *data)
 {
@@ -29,6 +37,7 @@ int	main(int argc, char **argv)
 	init_data(&data, argv);
 	init_philos(&data);
 	init_mutexes(&data);
+	signal(SIGINT, handle_sigint);
 	if (data.philos_nbr == 1)
 	{
 		one_philo_case(&data);

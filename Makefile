@@ -55,3 +55,6 @@ re: fclean all
 
 
 # valgrind --tool=helgrind ./philo 5 800 200 200
+# valgrind --tool=helgrind --history-level=full --track-lockorders=yes ./philo 5 800 200 200
+# valgrind --tool=helgrind          --history-level=full          --track-lockorders=yes          --check-stack-refs=yes          --fair-sched=yes          ./philo 5 800 200 200 4
+# valgrind --tool=drd ./philo 5 800 200 200 3

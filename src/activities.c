@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   activities.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jakrajic <jakrajic@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jakrajic <jakrajic@student.42.ft>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/18 18:53:03 by jakrajic          #+#    #+#             */
-/*   Updated: 2025/12/18 19:06:06 by jakrajic         ###   ########.fr       */
+/*   Updated: 2025/12/21 16:59:00 by jakrajic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	take_forks(t_philo *one_philo)
 {
-	if (philo_dead(one_philo->data))
+	if (philo_dead(one_philo->data) || stop)
 		return ;
 	if (one_philo->id % 2 == 0)
 	{
@@ -51,7 +51,7 @@ void	eat(t_philo *one_philo)
 
 void	psleep(t_philo *one_philo)
 {
-	if (philo_dead(one_philo->data))
+	if (philo_dead(one_philo->data) || stop)
 		return ;
 	print_activity(one_philo, SLEEP);
 	activity_pause(one_philo, one_philo->data->time_to_sleep);
@@ -61,7 +61,7 @@ void	think(t_philo *one_philo)
 {
 	long	think_time;
 
-	if (philo_dead(one_philo->data))
+	if (philo_dead(one_philo->data) || stop)
 		return ;
 	print_activity(one_philo, THINK);
 	if (one_philo->data->philos_nbr % 2 == 0)

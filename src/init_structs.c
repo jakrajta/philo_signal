@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_structs.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jakrajic <jakrajic@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jakrajic <jakrajic@student.42.ft>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/18 19:07:42 by jakrajic          #+#    #+#             */
-/*   Updated: 2025/12/18 19:07:45 by jakrajic         ###   ########.fr       */
+/*   Updated: 2025/12/20 20:51:26 by jakrajic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,3 +88,5 @@ void	destroy_mutexes(t_data *data)
 	pthread_mutex_destroy(&data->dead_lock);
 	pthread_mutex_destroy(&data->finished_lock);
 }
+
+

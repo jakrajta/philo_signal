@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jakrajic <jakrajic@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jakrajic <jakrajic@student.42.ft>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/18 18:52:17 by jakrajic          #+#    #+#             */
-/*   Updated: 2025/12/18 18:52:22 by jakrajic         ###   ########.fr       */
+/*   Updated: 2025/12/20 21:28:36 by jakrajic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 # include <limits.h>
 # include <stdlib.h>
 # include <stdbool.h>
+# include <signal.h>
+#include <stdatomic.h>
 
 # define B		"\x1b[1m"
 # define RED    "\x1b[31m"
@@ -53,8 +55,10 @@ typedef struct s_data
 	pthread_mutex_t	print_lock;
 	pthread_mutex_t	dead_lock;
 	pthread_mutex_t	finished_lock;
-	struct s_philo	*philos;
+	struct s_philo	*philos; 
 }	t_data;
+
+extern _Atomic sig_atomic_t stop;
 
 typedef struct s_philo
 {

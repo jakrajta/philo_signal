@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   monitor.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jakrajic <jakrajic@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jakrajic <jakrajic@student.42.ft>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/18 19:09:40 by jakrajic          #+#    #+#             */
-/*   Updated: 2025/12/18 19:09:42 by jakrajic         ###   ########.fr       */
+/*   Updated: 2025/12/20 21:19:53 by jakrajic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	*monitor(void *arg)
 	data = (t_data *)arg;
 	while (get_actual_time() < data->start_time)
 		usleep(10);
-	while (!philo_dead(data) && !philos_full(data))
+	while (!philo_dead(data) && !philos_full(data) && !stop)
 	{
 		i = -1;
 		while (++i < data->philos_nbr)

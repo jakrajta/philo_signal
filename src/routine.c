@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   routine.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jakrajic <jakrajic@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jakrajic <jakrajic@student.42.ft>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/18 19:13:39 by jakrajic          #+#    #+#             */
-/*   Updated: 2025/12/19 14:14:32 by jakrajic         ###   ########.fr       */
+/*   Updated: 2025/12/20 21:21:03 by jakrajic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	*routine(void *arg)
 	one_philo = (t_philo *)arg;
 	synchro_start(one_philo);
 	delay_philo(one_philo);
-	while (!philo_dead(one_philo->data) && !philos_full(one_philo->data))
+	while (!philo_dead(one_philo->data) && !philos_full(one_philo->data) && !stop)
 	{
 		take_forks(one_philo);
 		eat(one_philo);
