@@ -1,4 +1,4 @@
-# 🍝 42_Philosophers
+# 🍝 Philosophers
 
 A C implementation of the classic Dining Philosophers problem using threads and mutexes.
 
